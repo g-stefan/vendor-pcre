@@ -23,7 +23,7 @@ del /F /Q archive\%PROJECT%-%VERSION%.7z goto:eof
 rem Source
 pushd archive
 set VENDOR=%PROJECT%-%VERSION%
-set WEB_LINK=https://ftp.pcre.org/pub/pcre/pcre-8.44.zip
+set WEB_LINK=https://ftp.pcre.org/pub/pcre/pcre-8.45.zip
 if not exist %VENDOR%.zip curl --insecure --location %WEB_LINK% --output %VENDOR%.zip
 7z x -aoa -o. %VENDOR%.zip
 del /F /Q %VENDOR%.zip
