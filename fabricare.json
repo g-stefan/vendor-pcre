@@ -4,6 +4,9 @@
 		"type" : "xyo-cpp",
 		"SPDX-License-Identifier": "BSD-3-Clause",
 		"sourceLink" : "https://www.pcre.org/",
-		"version" : "8.45"
+		"version" : "8.45",
+		"hasRelease" : true,
+		"noVersion" : true,
+		"githubRelease" : true
 	}
 }
