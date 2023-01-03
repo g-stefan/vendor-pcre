@@ -1,13 +1,18 @@
 {
-	"project": {
-		"name" : "pcre",
+	"solution": {
+		"name" : "vendor-pcre",
 		"type" : "xyo-cpp",
-		"SPDX-License-Identifier": "BSD-3-Clause",
-		"sourceLink" : "https://www.pcre.org/",
-		"version" : "8.45",
-		"hasRelease" : true,
-		"noVersion" : true,
-		"githubRelease" : true,
-		"githubRepository" : "vendor-pcre"
+		"projects": [
+			{
+				"name" : "pcre",
+				"SPDX-License-Identifier": "BSD-3-Clause",
+				"sourceLink" : "https://www.pcre.org/",
+				"version" : "8.45",
+				"noVersion" : true
+			}
+		],
+		"releaseName" : "pcre",
+		"hasGithub" : true
 	}
 }
+
