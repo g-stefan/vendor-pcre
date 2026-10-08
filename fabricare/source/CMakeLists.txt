@@ -77,7 +77,7 @@ PROJECT(PCRE C CXX)
 # CMP0026 to avoid warnings for the use of LOCATION in GET_TARGET_PROPERTY.
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
-CMAKE_POLICY(SET CMP0026 OLD)
+# CMAKE_POLICY(SET CMP0026 OLD)
 
 # For FindReadline.cmake. This was changed to allow setting CMAKE_MODULE_PATH
 # on the command line.
@@ -485,12 +485,10 @@ OPTION(PCRE_REBUILD_CHARTABLES "Rebuild char tables" OFF)
 IF(PCRE_REBUILD_CHARTABLES)
   ADD_EXECUTABLE(dftables dftables.c)
 
-  GET_TARGET_PROPERTY(DFTABLES_EXE dftables LOCATION)
-
   ADD_CUSTOM_COMMAND(
     COMMENT "Generating character tables (pcre_chartables.c) for current locale"
     DEPENDS dftables
-    COMMAND ${DFTABLES_EXE}
+    COMMAND $<TARGET_FILE:dftables>
     ARGS        ${PROJECT_BINARY_DIR}/pcre_chartables.c
     OUTPUT      ${PROJECT_BINARY_DIR}/pcre_chartables.c
   )
@@ -837,10 +835,10 @@ IF(PCRE_BUILD_TESTS)
   # exes in Debug location tested by the RunTest shell script
   # via "make test"
   IF(PCRE_BUILD_PCREGREP)
-    GET_TARGET_PROPERTY(PCREGREP_EXE pcregrep DEBUG_LOCATION)
+    SET(PCREGREP_EXE $<TARGET_FILE:pcregrep>)
   ENDIF(PCRE_BUILD_PCREGREP)
 
-  GET_TARGET_PROPERTY(PCRETEST_EXE pcretest DEBUG_LOCATION)
+  SET(PCRETEST_EXE $<TARGET_FILE:pcretest>)
 
 # =================================================
   # Write out a CTest configuration file
